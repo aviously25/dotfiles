@@ -54,14 +54,7 @@ let g:user_emmet_settings = {
 \}
 
 " cpc config
-let g:coc_global_extensions = [
-    \ 'coc-snippets',
-    \ 'coc-pairs',
-    \ 'coc-tsserver',
-    \ 'coc-eslint',
-    \ 'coc-prettier',
-    \ 'coc-json',
-]
+let g:coc_global_extensions = ['coc-snippets', 'coc-pairs', 'coc-tsserver', 'coc-eslint', 'coc-prettier', 'coc-json']
 
 " map :Prettier to clean up file
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
