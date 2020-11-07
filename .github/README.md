@@ -14,3 +14,4 @@
 - [Spicetify](https://github.com/khanhas/spicetify-cli): love the themeable spotify
   - I use the Dribblish Nord theme
   - Really useful to set `display: none !important` on any ads
+- VSCode: I use "Settings Sync" extension to auto sync vscode settings
