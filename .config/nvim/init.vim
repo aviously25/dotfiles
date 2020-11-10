@@ -33,7 +33,6 @@ call plug#begin(stdpath('data') . '/plugged')
 
     Plug 'pangloss/vim-javascript'
     Plug 'maxmellon/vim-jsx-pretty'
-    let g:polyglot_disabled = ['jsx']
 call plug#end()
 
 " setting color scheme
