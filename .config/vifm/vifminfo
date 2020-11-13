@@ -168,8 +168,23 @@ d/Users/aviudash
 	Pictures
 10
 d/Users/aviudash/Pictures
-	IMG_5613.jpg
-63
+	IMG_5611.JPG
+25
+d/Users/aviudash
+	Downloads
+5
+d/Users/aviudash/Downloads
+	1576544307-cv_complete.pdf
+5
+d/Users/aviudash
+	Downloads
+5
+d/Users
+	aviudash
+3
+d/
+	sbin
+12
 d
 
 # Right window history (oldest to newest):
@@ -276,7 +291,7 @@ D
 # Local filter history (oldest to newest):
 
 # Registers:
-""/Users/aviudash/.local/share/vifm/Trash/000_Nord Wallpaper Pack
+""/Users/aviudash/.local/share/vifm/Trash/000_XtraFinderInjector.osax
 
 # Directory stack (oldest to newest):
 
@@ -285,6 +300,30 @@ t/Users/aviudash/.local/share/vifm/Trash/000_Most-Recent-Cohorts-All-Data-Elemen
 	/Users/aviudash/Documents/Most-Recent-Cohorts-All-Data-Elements.csv
 t/Users/aviudash/.local/share/vifm/Trash/000_Nord Wallpaper Pack
 	/Users/aviudash/Downloads/Nord Wallpaper Pack
+t/Users/aviudash/.local/share/vifm/Trash/000_avi.udash2_20201111_part_1
+	/Users/aviudash/Downloads/avi.udash2_20201111_part_1
+t/Users/aviudash/.local/share/vifm/Trash/000_avi.udash2_20201111_part_2
+	/Users/aviudash/Downloads/avi.udash2_20201111_part_2
+t/Users/aviudash/.local/share/vifm/Trash/000_avi.udash2_20201111_part_3
+	/Users/aviudash/Downloads/avi.udash2_20201111_part_3
+t/Users/aviudash/.local/share/vifm/Trash/000_avi.udash2_20201111_part_4
+	/Users/aviudash/Downloads/avi.udash2_20201111_part_4
+t/Users/aviudash/.local/share/vifm/Trash/000_avi.udash2_20201111_part_5
+	/Users/aviudash/Downloads/avi.udash2_20201111_part_5
+t/Users/aviudash/.local/share/vifm/Trash/000_bypass-paywalls-chrome-master
+	/Users/aviudash/Downloads/bypass-paywalls-chrome-master
+t/Users/aviudash/.local/share/vifm/Trash/000_avi.udash2_20201111_part_1.zip
+	/Users/aviudash/Downloads/avi.udash2_20201111_part_1.zip
+t/Users/aviudash/.local/share/vifm/Trash/000_avi.udash2_20201111_part_2.zip
+	/Users/aviudash/Downloads/avi.udash2_20201111_part_2.zip
+t/Users/aviudash/.local/share/vifm/Trash/000_avi.udash2_20201111_part_3.zip
+	/Users/aviudash/Downloads/avi.udash2_20201111_part_3.zip
+t/Users/aviudash/.local/share/vifm/Trash/000_avi.udash2_20201111_part_4.zip
+	/Users/aviudash/Downloads/avi.udash2_20201111_part_4.zip
+t/Users/aviudash/.local/share/vifm/Trash/000_avi.udash2_20201111_part_5.zip
+	/Users/aviudash/Downloads/avi.udash2_20201111_part_5.zip
+t/Users/aviudash/.local/share/vifm/Trash/000_XtraFinderInjector.osax
+	/Users/aviudash/Downloads/XtraFinderInjector.osax
 
 # State:
 f
