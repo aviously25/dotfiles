@@ -1,7 +1,7 @@
 {
   "BundleIdentifier": "genre",
   "BundleType": "Application",
-  "BundleVersion": "1.1.45",
+  "BundleVersion": "1.1.46",
   "VendorIdentifier": "com.spotify",
   "UserInstallable": false,
   "AppDescription": {
@@ -104,5 +104,5 @@
   "SkipLanguageValidation": true,
   "SkipUnrequireValidation": true,
   "SpmApp": true,
-  "GitRevision": "dddebadca1"
+  "GitRevision": "416cacf18e0"
 }
