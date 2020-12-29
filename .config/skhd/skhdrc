@@ -151,6 +151,15 @@ shift + cmd - a : yabai -m window --resize left:20:0
 # alt - p : yabai -m window --toggle sticky;\
 #           yabai -m window --toggle topmost;\
 #           yabai -m window --toggle pip
+#
+
+# Stack apps left, right, insert next window into stack
+shift + ctrl - d : yabai -m window --stack next
+shift + ctrl - a : yabai -m window --stack prev
+
+# naviagete stack
+shift + ctrl - l : yabai -m window --focus stack.next
+shift + ctrl - h : yabai -m window --focus stack.prev
 
 # open iterm2
 #open -n -a iterm

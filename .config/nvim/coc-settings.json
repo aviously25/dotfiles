@@ -6,8 +6,31 @@
         "typescriptreact",
         "json",
         "javascriptreact",
-        "typescript.tsx",
-        "graphql"
+        "typescript.tsx"
     ],
-    "prettier.tabWidth": 4
+    "prettier.tabWidth": 4,
+    "clangd.semanticHighlighting": true,
+    "languageserver": {
+        "ccls": {
+            "command": "ccls",
+            "args": ["--log-file=/tmp/ccls.log", "-v=1"],
+            "filetypes": ["c", "cc", "cpp", "c++", "objc", "objcpp"],
+            "rootPatterns": [".ccls", "compile_commands.json"],
+            "initializationOptions": {
+                "cache": {
+                    "directory": "/tmp/ccls"
+                },
+                "client": {
+                    "snippetSupport": true
+                }
+            }
+        }
+    },
+    "initializationOptions": {
+        "index": {
+            "onChange": true
+        },
+        "highlight": { "lsRanges": true }
+    },
+    "diagnostic.displayByAle": true
 }
