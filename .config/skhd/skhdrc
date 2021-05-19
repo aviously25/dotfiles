@@ -110,8 +110,8 @@ shift + alt - 0 : yabai -m space --balance
 # shift + cmd - 2 : yabai -m window --space  2; yabai -m space --focus 2
 
 # focus monitor
-# ctrl + alt - z  : yabai -m display --focus prev
-# ctrl + alt - 3  : yabai -m display --focus 3
+ctrl + cmd - h  : yabai -m display --focus prev
+ctrl + cmd - l  : yabai -m display --focus next
 
 # send window to monitor and follow focus
 # ctrl + cmd - c  : yabai -m window --display next; yabai -m display --focus next

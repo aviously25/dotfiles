@@ -12,11 +12,13 @@ call plug#begin(stdpath('data') . '/plugged')
     Plug 'mattn/emmet-vim'
     Plug 'dense-analysis/ale'
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
-    Plug 'jackguo380/vim-lsp-cxx-highlight'
-    Plug 'vim-airline/vim-airline'
-    Plug 'vim-airline/vim-airline-themes'
-    " Plug 'jiangmiao/auto-pairs'
+        Plug 'jackguo380/vim-lsp-cxx-highlight'
+        Plug 'vim-airline/vim-airline'
+        Plug 'vim-airline/vim-airline-themes'
+        " Plug 'jiangmiao/auto-pairs'
     Plug 'arcticicestudio/nord-vim'
+    Plug 'norcalli/nvim-colorizer.lua'
+    Plug 'yggdroot/indentline'
 
 
 "    Plug 'lervag/vimtex'
@@ -25,12 +27,14 @@ call plug#begin(stdpath('data') . '/plugged')
 "    let g:vimtex_quickfix_mode=0
 "    set conceallevel=1
 "    let g:tex_conceal='abdmg'
-"
-"    Plug 'sirver/ultisnips'
-"    let g:UltiSnipsExpandTrigger = '<tab>'
-"    let g:UltiSnipsJumpForwardTrigger = '<tab>'
-"    let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
-"    let g:UltiSnipsSnippetDirectories = ["UltiSnips", "my-snippets"]
+
+    "Plug 'sirver/ultisnips'
+    "let g:UltiSnipsExpandTrigger = '<tab>'
+    "let g:UltiSnipsJumpForwardTrigger = '<tab>'
+    "let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
+    "let g:UltiSnipsSnippetDirectories = ["UltiSnips", "my-snippets"]
+
+    Plug 'junegunn/goyo.vim'
 
     Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
     Plug 'junegunn/fzf.vim'
@@ -44,6 +48,9 @@ let g:airline_theme='nord'
 colorscheme nord
 highlight link jsxTagName jsxTag 
 highlight link jsxEndTag jsxTagName
+
+" for nvim colorizer
+lua require 'colorizer'.setup()
 
 " automatically opens up nerdtree
 autocmd vimenter * NERDTree
@@ -59,16 +66,19 @@ let g:user_emmet_settings = {
 \  },
 \}
 
+let g:user_emmet_leader_key=','
+
 " coc config
 let g:coc_global_extensions = ['coc-snippets', 'coc-pairs', 'coc-tsserver', 'coc-eslint', 'coc-prettier', 'coc-json']
 
 " map :Prettier to clean up file
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
 
+
 " automatically format cpp on file save
 function! Formatonsave()
   let l:formatdiff = 1
-  pyf /usr/local/Cellar/llvm/11.0.0/share/clang/clang-format.py
+  pyf /usr/local/Cellar/llvm/11.0.0_1/share/clang/clang-format.py
 endfunction
 autocmd BufWritePre *.h,*.cc,*.cpp call Formatonsave()
 
@@ -76,6 +86,9 @@ autocmd BufWritePre *.h,*.cc,*.cpp call Formatonsave()
 let g:cpp_class_scope_highlight = 1
 let g:cpp_member_variable_highlight = 1
 let g:cpp_class_decl_highlight = 1
+
+" auto generate pdf with latex
+autocmd BufWritePost *.tex :!latexmk -pdf %
 
 " EVERYTHING UNDERNEATH IS FOR COC
 " TextEdit might fail if hidden is not set.

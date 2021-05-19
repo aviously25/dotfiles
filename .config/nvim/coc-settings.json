@@ -6,7 +6,9 @@
         "typescriptreact",
         "json",
         "javascriptreact",
-        "typescript.tsx"
+        "typescript.tsx",
+        "css",
+        "html"
     ],
     "prettier.tabWidth": 4,
     "clangd.semanticHighlighting": true,
