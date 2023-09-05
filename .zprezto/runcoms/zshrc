@@ -1,0 +1,81 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
+#
+# Executes commands at the start of an interactive session.
+#
+# Authors:
+#   Sorin Ionescu <sorin.ionescu@gmail.com>
+#
+
+# Source Prezto.
+if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
+  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+fi
+
+
+# setting ENV variable
+EDITOR="/Applications/kitty.app"
+XDG_CONFIG_HOME=/Users/avi/.config # setting xdg_config
+OBSIDIAN_DIR=/Users/aviudash/Library/Mobile\ Documents/iCloud/~md/~Obsidian/Documents/Notes\ Vault/
+
+# adding prezto
+source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+
+# z for quick directory switching
+. $(brew --prefix)/etc/profile.d/z.sh
+
+# `direnv` for
+# eval "$(direnv hook zsh)"
+
+# aliases
+alias get_idf='. $HOME/Code/esp/esp-idf/export.sh'
+alias ls='ls --color=auto'
+alias myth='ssh udashavi@myth.stanford.edu'
+alias dotfiles='/usr/bin/git --git-dir=/Users/aviudash/.dotfiles/ --work-tree=/Users/aviudash'
+
+#nvm node manager
+export NVM_DIR="$HOME/.nvm"
+[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+
+# add to path and export 
+path+=('/opt/homebrew/anaconda3/bin')
+export PATH
+
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+(( ! ${+functions[p10k]} )) || p10k finalize
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/opt/homebrew/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/opt/homebrew/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/opt/homebrew/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/opt/homebrew/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
+# use homebrew version of ruby
+if [ -d "/opt/homebrew/opt/ruby/bin" ]; then
+  export PATH=/opt/homebrew/opt/ruby/bin:$PATH
+  export PATH=`gem environment gemdir`/bin:$PATH
+fi
+
+export PATH=$PATH:/Users/aviudash/.spicetify
+export PATH=$PATH:/Users/aviudash/bin
+export TERM=xterm-256color
+ctags=/opt/homebrew/bin/ctags
+export PATH="/opt/homebrew/opt/ruby@2.7/bin:$PATH"
+export PATH="/opt/homebrew/opt/postgresql@15/bin:$PATH"
