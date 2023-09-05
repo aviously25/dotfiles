@@ -1,0 +1,208 @@
+# ################################################################ #
+# THE FOLLOWING IS AN EXPLANATION OF THE GRAMMAR THAT SKHD PARSES. #
+# FOR SIMPLE EXAMPLE MAPPINGS LOOK FURTHER DOWN THIS FILE..        #
+# ################################################################ #
+
+# A list of all built-in modifier and literal keywords can
+# be found at https://github.com/koekeishiya/skhd/issues/1
+#
+# A hotkey is written according to the following rules:
+#
+#   hotkey       = <mode> '<' <action> | <action>
+#
+#   mode         = 'name of mode' | <mode> ',' <mode>
+#
+#   action       = <keysym> '[' <proc_map_lst> ']' | <keysym> '->' '[' <proc_map_lst> ']'
+#                  <keysym> ':' <command>          | <keysym> '->' ':' <command>
+#                  <keysym> ';' <mode>             | <keysym> '->' ';' <mode>
+#
+#   keysym       = <mod> '-' <key> | <key>
+#
+#   mod          = 'modifier keyword' | <mod> '+' <mod>
+#
+#   key          = <literal> | <keycode>
+#
+#   literal      = 'single letter or built-in keyword'
+#
+#   keycode      = 'apple keyboard kVK_<Key> values (0x3C)'
+#
+#   proc_map_lst = * <proc_map>
+#
+#   proc_map     = <string> ':' <command> | <string>     '~' |
+#                  '*'      ':' <command> | '*'          '~'
+#
+#   string       = '"' 'sequence of characters' '"'
+#
+#   command      = command is executed through '$SHELL -c' and
+#                  follows valid shell syntax. if the $SHELL environment
+#                  variable is not set, it will default to '/bin/bash'.
+#                  when bash is used, the ';' delimeter can be specified
+#                  to chain commands.
+#
+#                  to allow a command to extend into multiple lines,
+#                  prepend '\' at the end of the previous line.
+#
+#                  an EOL character signifies the end of the bind.
+#
+#   ->           = keypress is not consumed by skhd
+#
+#   *            = matches every application not specified in <proc_map_lst>
+#
+#   ~            = application is unbound and keypress is forwarded per usual, when specified in a <proc_map>
+#
+# A mode is declared according to the following rules:
+#
+#   mode_decl = '::' <name> '@' ':' <command> | '::' <name> ':' <command> |
+#               '::' <name> '@'               | '::' <name>
+#
+#   name      = desired name for this mode,
+#
+#   @         = capture keypresses regardless of being bound to an action
+#
+#   command   = command is executed through '$SHELL -c' and
+#               follows valid shell syntax. if the $SHELL environment
+#               variable is not set, it will default to '/bin/bash'.
+#               when bash is used, the ';' delimeter can be specified
+#               to chain commands.
+#
+#               to allow a command to extend into multiple lines,
+#               prepend '\' at the end of the previous line.
+#
+#               an EOL character signifies the end of the bind.
+
+# ############################################################### #
+# THE FOLLOWING SECTION CONTAIN SIMPLE MAPPINGS DEMONSTRATING HOW #
+# TO INTERACT WITH THE YABAI WM. THESE ARE SUPPOSED TO BE USED AS #
+# A REFERENCE ONLY, WHEN MAKING YOUR OWN CONFIGURATION..          #
+# ############################################################### #
+
+# opens kitty
+alt - return : open -na /Applications/kitty.app
+
+# Navigation
+alt - h : yabai -m window --focus west || $(yabai -m display --focus west)
+alt - j : yabai -m window --focus south || $(yabai -m display --focus south)
+alt - k : yabai -m window --focus north || $(yabai -m display --focus north)
+alt - l : yabai -m window --focus east || (yabai -m display --focus east)
+
+# Moving windows
+alt + shift - h : yabai -m window --swap west || $(yabai -m window --display west; yabai -m display --focus west)
+alt + shift - j : yabai -m window --swap south || $(yabai -m window --display south; yabai -m display --focus south)
+alt + shift - k : yabai -m window --swap north || $(yabai -m window --display north; yabai -m display --focus north)
+alt + shift - l : yabai -m window --swap east || $(yabai -m window --display east; yabai -m display --focus east)
+alt + shift - n : yabai -m space --create || yabai -m window --space 
+
+# Shift workspace focus
+alt - 1 : index="$(yabai -m query --spaces --display | jq '.[0].index')" && \
+                  yabai -m space --focus "${index}"
+alt - 2 : index="$(yabai -m query --spaces --display | jq '.[1].index')" && \
+                  yabai -m space --focus "${index}"
+alt - 3 : index="$(yabai -m query --spaces --display | jq '.[2].index')" && \
+                  yabai -m space --focus "${index}"
+alt - 4 : index="$(yabai -m query --spaces --display | jq '.[3].index')" && \
+                  yabai -m space --focus "${index}"
+alt - 5 : index="$(yabai -m query --spaces --display | jq '.[4].index')" && \
+                  yabai -m space --focus "${index}"
+alt - 6 : index="$(yabai -m query --spaces --display | jq '.[5].index')" && \
+                  yabai -m space --focus "${index}"
+alt - 7 : index="$(yabai -m query --spaces --display | jq '.[6].index')" && \
+                  yabai -m space --focus "${index}"
+alt - 8 : index="$(yabai -m query --spaces --display | jq '.[7].index')" && \
+                  yabai -m space --focus "${index}"
+alt - 9 : index="$(yabai -m query --spaces --display | jq '.[8].index')" && \
+                  yabai -m space --focus "${index}"
+
+# Move focus container to workspace
+shift + alt - 1 : index="$(yabai -m query --spaces --display | jq '.[0].index')" && \
+                  yabai -m window --space "${index}" && \
+                  yabai -m space --focus "${index}"
+shift + alt - 2 : index="$(yabai -m query --spaces --display | jq '.[1].index')" && \
+                  yabai -m window --space "${index}" && \
+                  yabai -m space --focus "${index}"
+shift + alt - 3 : index="$(yabai -m query --spaces --display | jq '.[2].index')" && \
+                  yabai -m window --space "${index}" && \
+                  yabai -m space --focus "${index}"
+shift + alt - 4 : index="$(yabai -m query --spaces --display | jq '.[3].index')" && \
+                  yabai -m window --space "${index}" && \
+                  yabai -m space --focus "${index}"
+shift + alt - 5 : index="$(yabai -m query --spaces --display | jq '.[4].index')" && \
+                  yabai -m window --space "${index}" && \
+                  yabai -m space --focus "${index}"
+shift + alt - 6 : index="$(yabai -m query --spaces --display | jq '.[5].index')" && \
+                  yabai -m window --space "${index}" && \
+                  yabai -m space --focus "${index}"
+shift + alt - 7 : index="$(yabai -m query --spaces --display | jq '.[6].index')" && \
+                  yabai -m window --space "${index}" && \
+                  yabai -m space --focus "${index}"
+shift + alt - 8 : index="$(yabai -m query --spaces --display | jq '.[7].index')" && \
+                  yabai -m window --space "${index}" && \
+                  yabai -m space --focus "${index}"
+shift + alt - 9 : index="$(yabai -m query --spaces --display | jq '.[8].index')" && \
+                  yabai -m window --space "${index}" && \
+                  yabai -m space --focus "${index}"
+
+# close focused window
+alt - q : yabai -m window --close
+
+# focus to differenct monitors
+lctrl + alt - h : yabai -m display --focus west
+lctrl + alt - j : 
+lctrl + alt - k : 
+lctrl + alt - l : yabai -m display --focus east
+
+# focus to next space in display
+lcmd + alt - h : yabai -m window --stack prev
+lcmd + alt - l : yabai -m window --stack next
+
+# move spaces to different monitors
+lctrl + shift + alt - h : yabai -m space --display west
+lctrl + shift + alt - l : yabai -m space --display east
+
+# Equalize size of windows
+lctrl + alt - e : yabai -m space --balance
+
+# Enable / Disable gaps in current workspace
+lctrl + alt - g : yabai -m space --toggle padding; yabai -m space --toggle gap
+
+# create desktop, move window and follow focus
+shift + alt - n : yabai -m space --create && \
+                  index="$(yabai -m query --spaces --display | jq '.[-1].index')" && \
+                  yabai -m window --space "${index}" && \
+
+# create desktop and follow focus
+# alt - n : yabai -m space --create && \
+#                   index="$(yabai -m query --spaces --display | jq '.[-1].index')" && \
+#                   yabai -m space --focus "${index}"
+
+# Float / Unfloat window
+shift + alt - space : \
+    yabai -m window --toggle float; \
+
+# make window sticky
+shift + alt - s : \
+    yabai -m window --toggle topmost; \
+
+# Restart Yabai and skhd
+shift + lctrl + alt - r : \
+    /usr/bin/env osascript <<< \
+        "display notification \"Restarting Yabai and skhd\" with title \"Yabai\""; \
+    launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai" \
+    brew services restart skhd
+
+# Make window native fullscreen
+alt - f         : yabai -m window --toggle zoom-fullscreen
+shift + alt - f : yabai -m window --toggle native-fullscreen
+
+# Rotate windows clockwise and anticlockwise
+# alt - r         : yabai -m space --rotate 270
+# shift + alt - r : yabai -m space --rotate 90
+
+# Rotate on X and Y Axis
+# shift + alt - x : yabai -m space --mirror x-axis
+# shift + alt - y : yabai -m space --mirror y-axis
+
+# Set insertion point for focused container
+# shift + lctrl + alt - h : yabai -m window --insert west
+# shift + lctrl + alt - j : yabai -m window --insert south
+# shift + lctrl + alt - k : yabai -m window --insert north
+# shift + lctrl + alt - l : yabai -m window --insert east

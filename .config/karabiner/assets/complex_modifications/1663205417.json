@@ -1,0 +1,40 @@
+{
+  "title": "Prevent unintended command-h hide window (rev 2)",
+  "rules": [
+    {
+      "description": "Disable Cmd+H Hide and Cmd+Option+H and Cmd+Option+L(rev 2)",
+      "manipulators": [
+        {
+          "type": "basic",
+          "description": "",
+          "from": {
+            "key_code": "h",
+            "modifiers": {
+              "mandatory": ["command"]
+            }
+          }
+        },
+        {
+          "type": "basic",
+          "description": "",
+          "from": {
+            "key_code": "h",
+            "modifiers": {
+              "mandatory": ["command", "left_alt"]
+            }
+          }
+        },
+        {
+          "type": "basic",
+          "description": "",
+          "from": {
+            "key_code": "l",
+            "modifiers": {
+              "mandatory": ["command", "left_alt"]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
