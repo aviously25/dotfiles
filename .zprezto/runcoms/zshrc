@@ -20,7 +20,7 @@ fi
 
 # setting ENV variable
 EDITOR="/Applications/kitty.app"
-XDG_CONFIG_HOME=/Users/avi/.config # setting xdg_config
+XDG_CONFIG_HOME=/Users/aviudash/.config # setting xdg_config
 OBSIDIAN_DIR=/Users/aviudash/Library/Mobile\ Documents/iCloud/~md/~Obsidian/Documents/Notes\ Vault/
 
 # adding prezto
