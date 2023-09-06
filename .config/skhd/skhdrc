@@ -93,24 +93,35 @@ alt + shift - l : yabai -m window --swap east || $(yabai -m window --display eas
 alt + shift - n : yabai -m space --create || yabai -m window --space 
 
 # Shift workspace focus
-alt - 1 : index="$(yabai -m query --spaces --display | jq '.[0].index')" && \
-                  yabai -m space --focus "${index}"
-alt - 2 : index="$(yabai -m query --spaces --display | jq '.[1].index')" && \
-                  yabai -m space --focus "${index}"
-alt - 3 : index="$(yabai -m query --spaces --display | jq '.[2].index')" && \
-                  yabai -m space --focus "${index}"
-alt - 4 : index="$(yabai -m query --spaces --display | jq '.[3].index')" && \
-                  yabai -m space --focus "${index}"
-alt - 5 : index="$(yabai -m query --spaces --display | jq '.[4].index')" && \
-                  yabai -m space --focus "${index}"
-alt - 6 : index="$(yabai -m query --spaces --display | jq '.[5].index')" && \
-                  yabai -m space --focus "${index}"
-alt - 7 : index="$(yabai -m query --spaces --display | jq '.[6].index')" && \
-                  yabai -m space --focus "${index}"
-alt - 8 : index="$(yabai -m query --spaces --display | jq '.[7].index')" && \
-                  yabai -m space --focus "${index}"
-alt - 9 : index="$(yabai -m query --spaces --display | jq '.[8].index')" && \
-                  yabai -m space --focus "${index}"
+# alt - 1 : index="$(yabai -m query --spaces --display | jq '.[0].index')" && \
+#                   yabai -m space --focus "${index}"
+# alt - 2 : index="$(yabai -m query --spaces --display | jq '.[1].index')" && \
+#                   yabai -m space --focus "${index}"
+# alt - 3 : index="$(yabai -m query --spaces --display | jq '.[2].index')" && \
+#                   yabai -m space --focus "${index}"
+# alt - 4 : index="$(yabai -m query --spaces --display | jq '.[3].index')" && \
+#                   yabai -m space --focus "${index}"
+# alt - 5 : index="$(yabai -m query --spaces --display | jq '.[4].index')" && \
+#                   yabai -m space --focus "${index}"
+# alt - 6 : index="$(yabai -m query --spaces --display | jq '.[5].index')" && \
+#                   yabai -m space --focus "${index}"
+# alt - 7 : index="$(yabai -m query --spaces --display | jq '.[6].index')" && \
+#                   yabai -m space --focus "${index}"
+# alt - 8 : index="$(yabai -m query --spaces --display | jq '.[7].index')" && \
+#                   yabai -m space --focus "${index}"
+# alt - 9 : index="$(yabai -m query --spaces --display | jq '.[8].index')" && \
+#                   yabai -m space --focus "${index}"
+
+alt - 1 : skhd -k "ctrl - 1"
+alt - 2 : skhd -k "ctrl - 2"
+alt - 3 : skhd -k "ctrl - 3"
+alt - 4 : skhd -k "ctrl - 4"
+alt - 5 : skhd -k "ctrl - 5"
+alt - 6 : skhd -k "ctrl - 6"
+alt - 7 : skhd -k "ctrl - 7"
+alt - 8 : skhd -k "ctrl - 8"
+alt - 9 : skhd -k "ctrl - 9"
+alt - 0 : skhd -k "ctrl - 0"
 
 # Move focus container to workspace
 shift + alt - 1 : index="$(yabai -m query --spaces --display | jq '.[0].index')" && \
